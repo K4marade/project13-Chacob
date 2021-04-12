@@ -40,3 +40,28 @@ def register_view(request):
             return redirect('home')
 
     return render(request, 'registration/register.html', locals())
+
+
+def logout_view(request):
+    """
+    Disconnect the user and redirect to the home-page
+
+     **Template:**
+    :template:`home/home.html`
+
+    """
+    logout(request)
+    messages.info(request, "Vous êtes bien déconnecté")
+    return redirect('home')
+
+
+@login_required
+def profile_view(request):
+    """
+    Display the user profile page is user is authenticated
+
+    **Template:**
+    :template:`account/profile.html`
+    """
+
+    return render(request, 'account/profile.html', locals())
