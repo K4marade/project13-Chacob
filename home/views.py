@@ -10,3 +10,14 @@ def home_view(request):
     """
 
     return render(request, 'home.html')
+
+
+def legal_view(request):
+    """
+    Display the legal page
+
+     **Template:**
+    :template:`legal.html`
+    """
+
+    return render(request, 'legal.html')
