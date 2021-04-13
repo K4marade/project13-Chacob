@@ -43,6 +43,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'accounts',
+    'home'
 ]
 
 MIDDLEWARE = [
@@ -127,7 +129,7 @@ STATIC_URL = '/static/'
 
 LOGIN_REDIRECT_URL = reverse_lazy('home')
 
-
+AUTH_USER_MODEL = 'accounts.UserAuth'
 
 MESSAGE_TAGS = {
     messages.DEBUG: 'alert-info',
