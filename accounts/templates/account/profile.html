@@ -1,0 +1,30 @@
+{% extends 'main.html' %}
+{% load static %}
+
+{% block content %}
+    <header class="pb-header">
+        <div class="container">
+            <div class="row h-100 justify-content-center text-center">
+                <div class="col-lg-10 align-self-center searched-block">
+                    <h2 class="text-white font-weight-bold">
+                        Bonjour {{ user.get_username }} !
+                        <hr class="divider my-4" />
+                    </h2>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="body-section">
+        <div class="container-big pb-text">
+            <div class="text-center pt-1" >
+                <p>Votre email : {{ user.email }}<p>
+            </div>
+            <div class="text-center pt-1" >
+                <a id="button-change-password" href="{% url 'password_change' %}" class="dis-block txt3 hov1 p-r-30 p-t-10 p-b-10 p-l-30">
+                    Modifier votre mot de passe
+                </a>
+            </div>
+        </div>
+    </section>
+{% endblock %}
