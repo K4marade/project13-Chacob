@@ -1,0 +1,16 @@
+.legal-bg{
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 1rem;
+}
+
+a{
+    color: #C45525;
+}
+
+.legal-text{
+    font-family: "Open Sans", sans-serif;
+}
+
+.title{
+    font-family: "Scope One", sans-serif;
+}
