@@ -12,6 +12,8 @@ pytest = "*"
 pytest-django = "*"
 pytest-mock = "*"
 tchappui-webdrivers = "*"
+folium = "*"
+geocoder = "*"
 
 [dev-packages]
 
