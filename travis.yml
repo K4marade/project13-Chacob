@@ -1,0 +1,28 @@
+language: python
+python:
+  - '3.8'
+
+addons:
+  chrome: stable
+
+install:
+  - pip3 install pipenv
+  - pipenv install
+
+before_script:
+  - export PATH=$PATH:$PWD/webdrivers/
+  - install-webdrivers --path webdrivers
+
+env:
+  global:
+    - DJANGO_SETTINGS_MODULE="chacob.settings.travis"
+
+branches:
+  only:
+  - staging
+
+services:
+  - postgresql
+
+script:
+  - pytest -vv
