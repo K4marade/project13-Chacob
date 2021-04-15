@@ -15,6 +15,7 @@ tchappui-webdrivers = "*"
 folium = "*"
 geocoder = "*"
 mixer = "*"
+pytest-cov = "*"
 
 [dev-packages]
 
