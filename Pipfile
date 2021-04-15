@@ -14,6 +14,7 @@ pytest-mock = "*"
 tchappui-webdrivers = "*"
 folium = "*"
 geocoder = "*"
+mixer = "*"
 
 [dev-packages]
 
