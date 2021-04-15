@@ -11,6 +11,7 @@ django-widget-tweaks = "*"
 pytest = "*"
 pytest-django = "*"
 pytest-mock = "*"
+tchappui-webdrivers = "*"
 
 [dev-packages]
 
