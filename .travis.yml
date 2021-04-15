@@ -19,7 +19,7 @@ env:
 
 branches:
   only:
-  - staging
+  - master
 
 services:
   - postgresql
