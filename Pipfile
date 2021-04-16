@@ -16,6 +16,7 @@ folium = "*"
 geocoder = "*"
 mixer = "*"
 pytest-cov = "*"
+django-crispy-forms = "*"
 
 [dev-packages]
 

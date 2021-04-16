@@ -44,8 +44,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'accounts',
+    'mycalendar',
     'home',
     'widget_tweaks',
+    'crispy_forms',
 ]
 
 MIDDLEWARE = [
@@ -139,5 +141,3 @@ MESSAGE_TAGS = {
     messages.WARNING: 'alert-warning',
     messages.ERROR: 'alert-danger',
 }
-
-
