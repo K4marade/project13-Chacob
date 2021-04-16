@@ -18,8 +18,8 @@
                     <hr class="divider my-4" />
                 </div>
                 <div class="col-lg-8 align-self-baseline">
-                    <h2 class="text-white-75 mb-5">Trouvez un vétérinaire proche de chez vous et recevez des rappels pour les rendez-vous ! </h2>
-                    <form class="d-flex" id="main-search" method="POST">
+                    <h2 class="text-white mb-5">Trouvez un vétérinaire proche de chez vous et recevez des rappels pour les rendez-vous ! </h2>
+                    <form class="d-flex" id="main-search" action="{% url 'home' %}#osmap" method="POST">
                         {% csrf_token %}
                         <div class="input-group mb-3">
                             <input type="search" name="search-address" class="form-control" placeholder="Chercher un vétérinaire" aria-label="Search" aria-describedby="button-addon2">
@@ -33,19 +33,18 @@
         </div>
     </header>
     <!-- About-->
-    <section class="page-section bg-primary" id="about">
+    <section class="page-section bg-primary" id="osmap">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-8 text-center">
-                    <h2 class="text-white mt-0">Cherchez un vétérinaire</h2>
-                    <hr class="divider light my-4" />
-                    <div>
-                        {{ osmap | safe }}
-                    </div>
-                    <hr class="divider light my-4" />
-
-{#                    <img class="img-cookers rounded mr-md-4" src="{% static 'home/img/colette_tatou.png' %}" alt="Colette">#}
-{#                    <img class="img-cookers rounded ml-md-4 mt-4 " src="{% static 'home/img/ratatouille-portrait.png' %}" alt="Ratatouille">#}
+                    {% if osmap %}
+{#                    <h2 class="text-white mt-0">Cherchez un vétérinaire</h2>#}
+                        <hr class="divider light my-4" />
+                            <div>
+                                {{ osmap | safe }}
+                            </div>
+                        <hr class="divider light my-4" />
+                    {% endif %}
                 </div>
             </div>
         </div>
@@ -57,19 +56,18 @@
                 <div class="col-lg-8 text-center">
                     <h2 class="mt-0">Contactez-nous !</h2>
                     <hr class="divider my-4" />
-                    <p class="text-muted mb-5">Vous avez une question ou une suggestion ? Appelez-nous ou
-                    envoyez-nous un email.</p>
+                    <p class="text-muted mb-5">Vous avez une question ou une suggestion ? Envoyez-nous un email.</p>
                 </div>
             </div>
             <div class="row">
-                <div class="col-lg-4 ml-auto text-center mb-5 mb-lg-0">
-                    <i class="fas fa-phone fa-3x mb-3 text-muted"></i>
-                    <div>+331 02 02 04 04</div>
-                </div>
-                <div class="col-lg-4 mr-auto text-center">
+{#                <div class="col-lg-4 ml-auto text-center mb-5 mb-lg-0">#}
+{#                    <i class="fas fa-phone fa-3x mb-3 text-muted"></i>#}
+{#                    <div>+331 02 02 04 04</div>#}
+{#                </div>#}
+                <div class="col mr-auto text-center">
                     <i class="fas fa-envelope fa-3x mb-3 text-muted"></i>
                     <!-- Make sure to change the email address in BOTH the anchor text and the link target below!-->
-                    <a class="d-block" href="mailto:contact@yourwebsite.com">contact@purbeurre.com</a>
+                    <a class="d-block" href="mailto:contact@yourwebsite.com">contact.chacob@gmail.com</a>
                 </div>
             </div>
         </div>
