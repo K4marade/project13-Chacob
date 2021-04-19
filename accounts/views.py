@@ -41,7 +41,7 @@ def register_view(request):
 
     return render(request, 'registration/register.html', locals())
 
-
+@login_required
 def logout_view(request):
     """
     Disconnect the user and redirect to the home-page

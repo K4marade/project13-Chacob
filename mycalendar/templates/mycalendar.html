@@ -1,11 +1,50 @@
 {% extends 'main.html' %}
+{% load static %}
 {% load crispy_forms_filters %}
 {% load crispy_forms_tags %}
 
+
 {% block content %}
-    <div class="container">
-        <form class="form-control-lg mx-5 my-5 font-weight-bolder">
-            {{ form|crispy }}
-        </form>
-    </div>
+
+
+    <!-- Masthead-->
+    <header class="masthead">
+        <div class="container h-100">
+            <div class="row h-100 align-items-center justify-content-center text-center">
+
+                <div class="col-lg-10 align-self-end">
+                    <h1 class="text-uppercase text-white">Chacob</h1>
+                    <hr class="divider my-4" />
+                </div>
+                <div class="col-lg-8 align-self-baseline">
+                    <h2 class="text-white mb-5">Trouvez un vétérinaire proche de chez vous et recevez des rappels pour les rendez-vous ! </h2>
+                    <form class="d-flex" id="main-search" action="{% url 'home' %}#osmap" method="POST">
+                        {% csrf_token %}
+                        <div class="input-group mb-3">
+                            <input type="search" name="search-address" class="form-control" placeholder="Chercher un vétérinaire" aria-label="Search" aria-describedby="button-addon2">
+                            <div class="input-group-append">
+                                <button style="background: #DE9440" class="btn" type="submit" id="button-addon2">Chercher</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- About-->
+    <section class="page-section" id="osmap">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 align-self-baseline">
+                    <form class=" mx-5 my-5 font-weight-bolder" method="post">{% csrf_token %}
+                        {{ form|crispy }}
+                        <button class="btn btn-primary" type="submit">Valider</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Contact-->
+
+
 {% endblock %}
