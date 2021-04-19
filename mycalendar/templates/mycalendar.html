@@ -32,10 +32,16 @@
         </div>
     </header>
     <!-- About-->
-    <section class="page-section" id="osmap">
+    <section class="page-section">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-8 align-self-baseline">
+                    {% for event in event_list %}
+                        <ul>
+                            <li>{{ event.date }}, {{ event.pet_name }}, {{ event.reason }}</li>
+                        </ul>
+
+                    {% endfor %}
                     <form class=" mx-5 my-5 font-weight-bolder" method="post">{% csrf_token %}
                         {{ form|crispy }}
                         <button class="btn btn-primary" type="submit">Valider</button>

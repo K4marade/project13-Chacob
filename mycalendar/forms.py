@@ -8,7 +8,7 @@ class EventForm(ModelForm):
         model = Event
         widgets = {"date": DateTimeInput(attrs={"type": "datetime-local"},)}
         fields = ("date", "pet_name", "reason", "comment")
-        labels = {"date": _("Date"),
+        labels = {"date": _("Date et Heure"),
                   "pet_name": _("Nom de mon animal"),
                   "reason": _("Motif"),
                   "comment": _("Commentaire")}
