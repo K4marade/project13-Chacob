@@ -9,6 +9,7 @@ class Event(models.Model):
     pet_name = models.CharField(max_length=50)
     reason = models.CharField(max_length=50)
     comment = models.TextField(max_length=250, null=True, blank=True)
+    mail_alert = models.BooleanField()
 
     def __str__(self):
         return "{}, {}, {}".format(self.user_id, self.date, self.pet_name)
