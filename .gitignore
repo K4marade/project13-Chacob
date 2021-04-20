@@ -15,3 +15,4 @@ chacob/settings/.env
 .coverage
 
 htmlcov/
+send_alert.sh

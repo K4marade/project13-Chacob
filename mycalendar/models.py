@@ -12,4 +12,4 @@ class Event(models.Model):
     mail_alert = models.BooleanField()
 
     def __str__(self):
-        return "{}, {}, {}".format(self.user_id, self.date, self.pet_name)
+        return "{}, {}, {}, {}".format(self.user_id, self.date, self.pet_name, self.mail_alert)
