@@ -10041,6 +10041,7 @@ hr.light {
   }
   #mainNav .navbar-brand {
     color: rgba(255, 255, 255, 1);
+    text-shadow: 1px 1px 2px black;
   }
   #mainNav .navbar-brand:hover {
     color: rgba(255, 255, 255, 0.6);
@@ -10061,6 +10062,7 @@ hr.light {
   }
   #mainNav.navbar-scrolled .navbar-brand {
     color: #212529;
+    text-shadow: 1px 1px 2px grey;
   }
   #mainNav.navbar-scrolled .navbar-brand:hover {
     color: #f4623a;
