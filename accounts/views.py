@@ -40,7 +40,7 @@ def register_view(request):
 
 def logout_view(request):
     """
-    Disconnect the user and redirect to the home-page
+    Disconnect the user and redirect to the homepage
 
      **Template:**
     :template:`home/home.html`

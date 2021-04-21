@@ -3,6 +3,10 @@ from django.conf import settings
 
 
 class Event(models.Model):
+    """
+    Stores a single event entry, related to :model:`accounts.UserAuth`.
+    """
+
     user_id = models.ForeignKey(settings.AUTH_USER_MODEL,
                                 on_delete=models.CASCADE)
     date = models.DateTimeField()

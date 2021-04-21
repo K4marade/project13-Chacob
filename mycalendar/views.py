@@ -13,6 +13,20 @@ environ.Env.read_env()
 
 @login_required
 def events_view(request):
+    """
+    GET method:
+    Displays the calendar page with the event form
+
+     **Template:**
+    :template:`mycalendar/mycalendar.html`
+
+    POST method:
+    Displays the calendar with the new event
+
+     **Template:**
+     :template: `mycalendar/mycalendar.html`
+    """
+
     current_user = request.user
     event_list = Event.objects.filter(user_id=current_user)
 
