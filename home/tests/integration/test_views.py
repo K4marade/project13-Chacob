@@ -1,6 +1,5 @@
 from django.test import TestCase, Client
 from django.urls import reverse
-from mixer.backend import django
 
 
 class TestViews(TestCase):
@@ -26,7 +25,6 @@ class TestViews(TestCase):
         assert len(message) == 1
         assert str(message[0]) == "Nous n'avons pas pu trouver de résultat. Réessayez"
         assert response_with_wrong_input.status_code == 200
-
 
     def test_legal_view(self):
         """Tests the legal view"""
