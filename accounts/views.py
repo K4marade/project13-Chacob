@@ -4,10 +4,8 @@ from django.contrib import messages
 from django.contrib.auth import logout, login, authenticate
 from .forms import RegisterForm
 
-
 # from .decorators import unauthenticated_user
-# from products.models import Product
-# from account.models import UserAuth
+
 
 # @unauthenticated_user
 def register_view(request):
@@ -39,12 +37,10 @@ def register_view(request):
             messages.success(request, "Bienvenue " + username + " !")
             return redirect('home')
 
-    return render(request, 'registration/register.html', locals())
-
 
 def logout_view(request):
     """
-    Disconnect the user and redirect to the home-page
+    Disconnect the user and redirect to the homepage
 
      **Template:**
     :template:`home/home.html`

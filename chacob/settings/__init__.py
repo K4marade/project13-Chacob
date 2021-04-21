@@ -13,10 +13,10 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 import os
 import environ
 
-# Initialise environment variables
 from django.urls import reverse_lazy
 from django.contrib import messages
 
+# Initialise environment variables
 env = environ.Env()
 environ.Env.read_env()
 
@@ -44,8 +44,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'accounts',
+    'mycalendar',
     'home',
     'widget_tweaks',
+    'crispy_forms',
 ]
 
 MIDDLEWARE = [
@@ -140,4 +142,9 @@ MESSAGE_TAGS = {
     messages.ERROR: 'alert-danger',
 }
 
-
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = env('GMAIL_USER')
+EMAIL_HOST_PASSWORD = env('GMAIL_PASS')

@@ -86,9 +86,8 @@ class TestViews(TestCase):
         response = self.c.get(profile_url)
         assert response.status_code == 200
 
-
     def test_reset_password_view(self):
-        """test the reset password view"""
+        """tests the reset password view"""
 
         self.user.objects.create_user(username="Leonard",
                                       email="leo@leo.com",
