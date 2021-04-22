@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'accounts',
     'mycalendar',
     'home',
+    'mypet',
     'widget_tweaks',
     'crispy_forms',
 ]
