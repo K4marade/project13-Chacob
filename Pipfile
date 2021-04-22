@@ -18,6 +18,7 @@ mixer = "*"
 pytest-cov = "*"
 django-crispy-forms = "*"
 datetime = "*"
+geopy = "*"
 
 [dev-packages]
 
