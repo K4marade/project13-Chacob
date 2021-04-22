@@ -12,7 +12,7 @@
             var draggable = selector_map.attr('data-draggable');
 
             if (img_pin == null) {
-                img_pin = 'images/icons/location.png';
+                img_pin = 'images/icons/places.png';
             }
             if (data_map_x == null || data_map_y == null) {
                 data_map_x = 40.007749;

@@ -1,7 +1,6 @@
 from django.shortcuts import render
 from django.contrib import messages
-import folium
-import geocoder
+
 from .map import OpenStreetMap
 
 
@@ -17,16 +16,13 @@ def home_view(request):
     search_address = request.POST.get('search-address')
 
     if search_address:
-        location = geocoder.osm(search_address)
-        lat = location.lat
-        lng = location.lng
-        address = location.address
-        if lat is None or lng is None:
+        try:
+            location = osmap.get_places_location(search_address)
+            osmap = osmap.display_map(location, search_address)
+        except (IndexError, ValueError):
             message = messages.error(
                 request, "Nous n'avons pas pu trouver de résultat. Réessayez")
             return render(request, 'home.html', locals())
-        else:
-            osmap = osmap.display_map(lat, lng, 15, address)  # = folium.Map(location=[lat, lng], zoom_start=17)
 
     return render(request, 'home.html', {'osmap': osmap})
 
