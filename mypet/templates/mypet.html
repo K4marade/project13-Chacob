@@ -15,8 +15,8 @@
     <header class="cal-masthead">
         <div class="container h-100 w-50">
             <div class="row h-100 align-items-center justify-content-center">
-                <form class=" mx-5 my-5 text-white font-weight-bolder" method="post">{% csrf_token %}
-                    {{ form|crispy }}
+                <form class=" mx-5 my-5 text-black font-weight-bolder" method="post">{% csrf_token %}
+                    {{ form | crispy }}
                     <button class="btn btn-primary my-2" type="submit">Valider</button>
                 </form>
 {#            {% if event_list.count == 0 %}#}
