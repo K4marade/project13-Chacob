@@ -201,6 +201,7 @@ iframe {
 /*------------------------------------------------------------------
 [ Login100 more ]*/
 .login100-more {
+  background: linear-gradient(to right, rgba(38, 31, 26, 0.2), rgba(66, 59, 53, 0.2) 0%, rgba(185, 179, 171, 0.2) 100%), url('/static/account/img/black-cat-eyes.jpg');
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
