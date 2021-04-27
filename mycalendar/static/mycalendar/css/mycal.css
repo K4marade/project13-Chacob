@@ -9,9 +9,10 @@
 }
 
 .cal-header{
-    background: linear-gradient(to right, rgba(38, 31, 26, 0.3), rgba(66, 59, 53, 0.3) 100%, rgba(185, 179, 171, 0.3) 0%), url("../img/red_cat_sm.png");
+    background: linear-gradient(to right, rgba(38, 31, 26, 0.1), rgba(66, 59, 53, 0.1) 100%, rgba(185, 179, 171, 0.1)), url("../img/red_cat_sm.png");
     background-size: cover;
-    height: 8.5rem;
+    min-height: 15rem;
+    max-height: 20rem;
 }
 
 .bg-blue{
