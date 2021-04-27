@@ -4,11 +4,11 @@ from django.conf import settings
 
 class Pet(models.Model):
     SPECIES_CHOICE = [
-        ("cat", "Cat")
+        ("cat", "Chat")
     ]
     GENDER_CHOICE = [
-        ("male", "Male"),
-        ("female", "Female "),
+        ("male", "Mâle"),
+        ("female", "Femelle "),
     ]
     user = models.ForeignKey(settings.AUTH_USER_MODEL,
                              on_delete=models.CASCADE)
@@ -17,4 +17,7 @@ class Pet(models.Model):
     birth_date = models.DateField()
     name = models.CharField(max_length=50)
     picture = models.ImageField(null=True, blank=True, upload_to="images/")
+
+    def __str__(self):
+        return "{}".format(self.name)
 
