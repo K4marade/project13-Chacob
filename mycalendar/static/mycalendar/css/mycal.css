@@ -1,36 +1,48 @@
-header.cal-masthead {
-  padding-top: 10rem;
-  padding-bottom: calc(10rem - 4.5rem);
-  background: linear-gradient(to right, rgba(38, 31, 26, 0.2), rgba(66, 59, 53, 0.2) 0%, rgba(185, 179, 171, 0.2) 40%), url("../img/cal-bg.jpg");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-attachment: scroll;
-  background-size: cover;
-}
-header.cal-masthead h1 {
-  font-size: 2.25rem;
-}
-@media (min-width: 992px) {
-  header.cal-masthead {
-    height: 100vh;
-    min-height: 40rem;
-    padding-top: 4.5rem;
-    padding-bottom: 0;
-  }
-  header.cal-masthead p {
-    font-size: 1.15rem;
-  }
-  header.cal-masthead h1 {
-    font-size: 3rem;
-  }
-}
-@media (min-width: 1200px) {
-  header.cal-masthead h1 {
-    font-size: 3.5rem;
-  }
+.body-section{
+    padding: 5rem 0;
+    background: white;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+    background-size: cover;
+    min-height: 100%;
 }
 
-#cal-section{
-    background-color: rgba(255, 255, 255, 0.8);
-    border-radius: 0.4rem;
+.cal-header{
+    background: linear-gradient(to right, rgba(38, 31, 26, 0.3), rgba(66, 59, 53, 0.3) 100%, rgba(185, 179, 171, 0.3) 0%), url("../img/red_cat_sm.png");
+    background-size: cover;
+    height: 8.5rem;
+}
+
+.bg-blue{
+    background: rgba(149, 191, 218, 0.5);
+
+}
+
+p, .p{
+    font-family: "Open Sans", sans-serif;
+    font-weight: 400 !important;
+    line-height: 1.2;
+}
+
+.wrapper{
+    border: 3px solid #dddddd;
+    border-radius: 1rem;
+    display: flex;
+    overflow-x: auto;
+}
+
+.wrapper .item{
+    text-align: center;
+}
+
+.td-sm{
+    word-wrap: break-word;
+    min-width: 160px;
+}
+
+.td-lg{
+    word-wrap: break-word;
+    min-width: 250px;
+    max-width: 250px;
 }
