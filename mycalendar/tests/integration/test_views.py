@@ -3,6 +3,8 @@ from django.test import TestCase, Client
 from django.urls import reverse
 
 from mycalendar.models import Event
+from mypet.models import Pet
+from accounts.models import UserAuth
 
 
 class TestViews(TestCase):
@@ -15,20 +17,31 @@ class TestViews(TestCase):
         self.c = Client()
 
     def test_events_view(self):
-        self.user.objects.create_user(username="Leonard",
-                                      password="12345Testing")
+        """Method that tests a new event is created by a user"""
+
+        user = self.user.objects.create_user(username="Leonard",
+                                             password="12345Testing")
 
         self.c.login(username="Leonard", password="12345Testing")
+
+        pet = Pet.objects.create(user=UserAuth.objects.get(id=user.id),
+                                 species="Chat",
+                                 gender="Mâle",
+                                 birth_date="2019-03-20",
+                                 name="Felix")
+
+        assert pet.name == "Felix"
+        assert Pet.objects.count() == 1
 
         mycal_url = reverse('mycalendar')
         assert self.c.get(mycal_url).status_code == 200
 
         response = self.c.post(mycal_url, {
             "date": "20/08/2021 20:00",
-            "pet_name": "Felix",
+            "pet_name": Pet.objects.get(id=pet.id).id,
             "reason": "Vaccin",
-            "comment": "Test example"
-        })
+            "comment": "Test example",
+        }, follow=True)
 
         assert Event.objects.count() == 1
         assert response.status_code == 200

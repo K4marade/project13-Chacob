@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'accounts',
     'mycalendar',
     'home',
+    'mypet',
     'widget_tweaks',
     'crispy_forms',
 ]
@@ -142,9 +143,13 @@ MESSAGE_TAGS = {
     messages.ERROR: 'alert-danger',
 }
 
+# Email
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = env('GMAIL_USER')
 EMAIL_HOST_PASSWORD = env('GMAIL_PASS')
+
+# Crispy forms
+CRISPY_TEMPLATE_PACK = 'bootstrap4'

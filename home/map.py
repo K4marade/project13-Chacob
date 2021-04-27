@@ -1,4 +1,6 @@
 import folium
+import geocoder
+import requests
 
 
 class OpenStreetMap:
@@ -6,23 +8,53 @@ class OpenStreetMap:
 
     def __init__(self):
         """Class constructor"""
+        self.lat = []
+        self.lng = []
+        self.address = []
 
-        pass
+    def get_places_location(self, search):
+        url = "https://nominatim.openstreetmap.org/search"
+        params = {
+            "q": "Clinique Vétérinaire, Vétérinaire, " + search + ", FR",
+            "limit": 20,
+            "country": "france",
+            "countrycodes": "fr",
+            "addressdetails": "1",
+            "format": "json"
+        }
+
+        data = requests.get(url, params)
+        response = data.json()
+
+        for place in response:
+            if search in place["address"]["municipality"] or search in place["address"]["postcode"]:
+                self.lat.append(place["lat"])
+                self.lng.append(place["lon"])
+                self.address.append(place["display_name"])
+        return self.lat, self.lng, self.address
 
     @staticmethod
-    def display_map(lat, lng, zoom, address):
+    def display_map(places, city):
         """Method that return a map in an html representation
         to be displayed to the user in a template"""
 
-        osmap = folium.Map(location=[lat, lng], zoom_start=zoom)
+        # Get city coordinates
+        city = geocoder.osm(location=city + ", FR", )
+
+        # Initialise map
+        osmap = folium.Map(location=[city.lat, city.lng], zoom_start=11)
+
+        # Add layers
         layer = folium.raster_layers
         layer.TileLayer(detect_retina=True).add_to(osmap)
         layer.TileLayer('Stamen Terrain', name='Terrain', detect_retina=True).add_to(osmap)
         folium.LayerControl().add_to(osmap)
 
-        folium.Marker([lat, lng], popup=address).add_to(osmap)
+        # Add markers according to results from search
+        for lat, lng, address in zip(places[0], places[1], places[2]):  # (self.lat, self.lng, self.address):
+            folium.Marker(location=[lat, lng], popup=address).add_to(osmap)
 
+        # Render map with html code
         osmap = osmap._repr_html_()
 
         return osmap
-

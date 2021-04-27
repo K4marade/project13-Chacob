@@ -8,8 +8,9 @@ class TestModels:
     """Class that tests mycalendar models"""
 
     def test_event_model(self):
-        """Test a new pet is in database"""
+        """Test a new event is in database"""
 
-        pet = mixer.blend(Event, pet_name='Felix')
-        assert pet.pet_name == 'Felix'
-        assert Event.objects.filter(pet_name='Felix').exists() is True
+        event_reason = mixer.blend(Event, reason='Vaccin')
+        assert event_reason.reason == 'Vaccin'
+        assert Event.objects.filter(reason='Vaccin').exists() is True
+        assert Event.objects.count() == 1

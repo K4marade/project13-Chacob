@@ -1,6 +1,6 @@
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 
 from .models import Event
 from .forms import EventForm
@@ -27,14 +27,13 @@ def events_view(request):
      :template: `mycalendar/mycalendar.html`
     """
 
-    current_user = request.user
-    event_list = Event.objects.filter(user_id=current_user)
+    event_list = Event.objects.filter(user_id=request.user).order_by('-date')
 
     if request.method == "GET":
-        form = EventForm()
+        form = EventForm(request.user)
         return render(request, "mycalendar.html", locals())
     elif request.method == "POST":
-        form = EventForm(request.POST)
+        form = EventForm(request.user, request.POST)
         if form.is_valid():
             date = form.cleaned_data.get("date")
             pet_name = form.cleaned_data.get("pet_name")
@@ -42,7 +41,7 @@ def events_view(request):
             comment = form.cleaned_data.get("comment")
             alert = form.cleaned_data.get("mail_alert")
 
-            Event.objects.create(user_id=current_user,
+            Event.objects.create(user_id=request.user,
                                  date=date,
                                  pet_name=pet_name,
                                  reason=reason,
@@ -50,5 +49,5 @@ def events_view(request):
                                  mail_alert=alert)
 
             messages.success(request, "Votre nouveau rendez-vous a bien été enregistré")
-            form = EventForm()
-            return render(request, "mycalendar.html", locals())
+            form = EventForm(request.user)
+            return redirect('mycalendar')
