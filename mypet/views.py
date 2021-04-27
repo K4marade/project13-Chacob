@@ -1,5 +1,5 @@
 from django.contrib import messages
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .forms import PetForm
 from .models import Pet
 
@@ -24,6 +24,6 @@ def my_pet_view(request):
                                name=name,
                                picture=picture)
 
-            messages.success(request, name + "a bien été ajouté !")
+            messages.success(request, name + " a bien été ajouté !")
             form = PetForm()
-            return render(request, "mypet.html", locals())
+            return redirect('my_pet')
