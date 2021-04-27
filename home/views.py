@@ -16,6 +16,7 @@ def home_view(request):
     search_address = request.POST.get('search-address')
 
     if search_address:
+        search_address = search_address.capitalize()
         try:
             location = osmap.get_places_location(search_address)
             osmap = osmap.display_map(location, search_address)

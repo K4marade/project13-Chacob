@@ -18,11 +18,12 @@
                     <hr class="divider my-4" />
                 </div>
                 <div class="col-lg-8 align-self-baseline">
-                    <h2 class="text-white mb-5">Trouvez un vétérinaire proche de chez vous et recevez des rappels pour les rendez-vous ! </h2>
+                    <h2 class="text-white mb-5">Trouvez un vétérinaire proche de chez vous et connectez-vous pour
+                        gérer vos rendez-vous ! </h2>
                     <form class="d-flex" id="main-search" action="{% url 'home' %}#osmap" method="POST">
                         {% csrf_token %}
                         <div class="input-group mb-3">
-                            <input type="search" name="search-address" class="form-control" placeholder="Chercher un vétérinaire" aria-label="Search" aria-describedby="button-addon2">
+                            <input type="search" name="search-address" class="form-control" placeholder="Tappez le nom de votre ville" aria-label="Search" aria-describedby="button-addon2">
                             <div class="input-group-append">
                                 <button style="background: #DE9440" class="btn" type="submit" id="button-addon2">Chercher</button>
                             </div>
