@@ -10,7 +10,7 @@ class Event(models.Model):
     user_id = models.ForeignKey(settings.AUTH_USER_MODEL,
                                 on_delete=models.CASCADE)
     date = models.DateTimeField()
-    pet_name = models.CharField(max_length=50)
+    pet_name = models.ForeignKey('mypet.Pet', on_delete=models.CASCADE)
     reason = models.CharField(max_length=50)
     comment = models.TextField(max_length=250, null=True, blank=True)
     mail_alert = models.BooleanField()
