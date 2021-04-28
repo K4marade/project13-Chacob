@@ -24,7 +24,7 @@
                 </div>
                 <div>
                      <form class="mx-5 my-5 font-weight-bolder" method="post" enctype="multipart/form-data">{% csrf_token %}
-                          {{ form | crispy | safe }}
+                          {{ form | crispy }}
                         <button class="btn btn-primary" type="submit">Valider</button>
                       </form>
                 </div>
@@ -38,7 +38,7 @@
                     <div class="collapse mt-3 col-lg-4" id="form">
                         <div class="card card-body">
                           <form class="mx-5 my-5 font-weight-bolder" method="post" enctype="multipart/form-data">{% csrf_token %}
-                              {{form | crispy | safe}}
+                              {{ form | crispy }}
                             <button class="btn btn-primary" type="submit">Valider</button>
                           </form>
                         </div>
@@ -48,14 +48,17 @@
             <div class="container mt-4">
                 {% for pet in pets_list %}
                     <ul>
-                        <li class="lis">
+                        <li>
                             {% if pet.picture %}
-                                    <img class="pet-img" src="{{ pet.picture.url }}" alt="{{ pet.name }}" >
-                                    {{ pet.name}}, né le {{ pet.birth_date }}
-                            {% else %}
-                                {{ pet.name}}, né le {{ pet.birth_date }}
+                                <img class="pet-img mr-2" src="{{ pet.picture.url }}" alt="{{ pet.name }}" >
                             {% endif %}
-
+                            {{ pet.name }}, né le {{ pet.birth_date }}
+                            <button class="btn btn-sm btn-light ml-4">
+                                <small><a href="{% url "update_my_pet" id_pet=pet.id %}">Modifier</a></small>
+                            </button>
+                            <button class=" btn btn-sm btn-light" onclick="return confirm('Êtes-vous sûr(e) ?');" >
+                                <small><a href="{% url "delete_my_pet" id_pet=pet.id %}">Supprimer</a></small>
+                            </button>
                         </li>
                     </ul>
                 {% endfor %}
