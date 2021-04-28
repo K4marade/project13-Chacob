@@ -1,0 +1,8 @@
+.pet-img{
+    border: 2px solid lightgray;
+    border-radius: 50%;
+    min-height: 80px;
+    min-width: 80px;
+    max-height: 80px;
+    max-width: 80px;
+}

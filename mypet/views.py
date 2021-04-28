@@ -5,11 +5,14 @@ from .models import Pet
 
 
 def my_pet_view(request):
+
+    pets_list = Pet.objects.filter(user=request.user).order_by('species')
+
     if request.method == "GET":
         form = PetForm()
         return render(request, "mypet.html", locals())
     elif request.method == "POST":
-        form = PetForm(request.POST)
+        form = PetForm(request.POST, request.FILES)
         if form.is_valid():
             species = form.cleaned_data.get("species")
             gender = form.cleaned_data.get("gender")
