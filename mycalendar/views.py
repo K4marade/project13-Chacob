@@ -12,7 +12,7 @@ environ.Env.read_env()
 
 
 @login_required
-def events_view(request):
+def create_events_view(request):
     """
     GET method:
     Displays the calendar page with the event form
@@ -51,3 +51,9 @@ def events_view(request):
             messages.success(request, "Votre nouveau rendez-vous a bien été enregistré")
             form = EventForm(request.user)
             return redirect('mycalendar')
+
+
+def delete_events_view(request, id_event):
+    instance_event = Event.objects.get(pk=id_event)
+    instance_event.delete()
+    return redirect("mycalendar")
