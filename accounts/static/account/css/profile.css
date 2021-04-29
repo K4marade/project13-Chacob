@@ -1,0 +1,26 @@
+.profile-body-section{
+    padding: 5rem 0;
+    background: white;
+    min-height: 25rem;
+
+}
+
+h2{
+    margin-top: 7rem;
+    text-shadow: 1px 1px 2px black;
+}
+
+.profile-text{
+    font-family: "Scope One", sans-serif;
+    font-size: 1.5rem;
+    margin-top: 3%;
+}
+
+.back-light{
+    background-color: #dddddd;
+    border: 2px solid;
+}
+
+p{
+    font-weight: bold;
+}
