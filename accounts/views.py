@@ -2,6 +2,8 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth import logout, login, authenticate
+
+from mypet.models import Pet
 from .forms import RegisterForm
 
 # from .decorators import unauthenticated_user
@@ -59,5 +61,6 @@ def profile_view(request):
     **Template:**
     :template:`account/profile.html`
     """
+    pet = Pet.objects.filter(user=request.user)
 
     return render(request, 'account/profile.html', locals())
