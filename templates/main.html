@@ -53,8 +53,8 @@
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ml-auto my-2 my-lg-0">
                         {% if user.is_authenticated %}
-                            <li class="nav-item"><a id="button-login" class="nav-link" href="{% url 'my_pet'%}">Mes animaux</a></li>
                             <li class="nav-item"><a id="button-login" class="nav-link" href="{% url 'profile'%}">Mon compte</a></li>
+                            <li class="nav-item"><a id="button-login" class="nav-link" href="{% url 'my_pet'%}">Mes animaux</a></li>
                             <li class="nav-item"><a id="button-login" class="nav-link" href="{% url 'mycalendar'%}">Mes rendez-vous</a></li>
                             <li class="nav-item"><a id="button-login" class="nav-link" href="{% url 'logout'%}?next={{request.path}}">Déconnexion</a></li>
                         {% else %}
