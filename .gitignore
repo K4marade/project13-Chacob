@@ -16,3 +16,5 @@ chacob/settings/.env
 
 htmlcov/
 send_alert.sh
+
+media/
