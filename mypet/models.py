@@ -25,8 +25,7 @@ class Pet(models.Model):
     gender = models.CharField(max_length=20, choices=GENDER_CHOICE)
     birth_date = models.DateField()
     name = models.CharField(max_length=50)
-    picture = models.ImageField(null=True, blank=True, upload_to="images/",)
-                                #validators=[validate_image])  # default="default-pet_rasIz4F.png",
+    picture = models.ImageField(null=True, blank=True, upload_to="images/", )  # validators=[validate_image])
 
     def __str__(self):
         return "{}".format(self.name)

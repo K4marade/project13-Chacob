@@ -47,18 +47,18 @@
             <div class="container mt-4">
                 {% for pet in pets_list %}
                     <ul>
-                        <li>
-                            {% if pet.picture %}
-                                <img class="pet-img mr-2" src="{{ pet.picture.url }}" alt="{{ pet.name }}" >
-                            {% endif %}
-                            {{ pet.name }}, né le {{ pet.birth_date }}
-                            <button class="btn btn-sm btn-light ml-4">
-                                <small><a href="{% url "update_my_pet" id_pet=pet.id %}">Modifier</a></small>
-                            </button>
-                            <button class=" btn btn-sm btn-light" onclick="return confirm('Êtes-vous sûr(e) ?');" >
-                                <small><a href="{% url "delete_my_pet" id_pet=pet.id %}">Supprimer</a></small>
-                            </button>
-                        </li>
+                        {% if pet.picture %}
+                            <img class="pet-img mr-2" src="{{ pet.picture.url }}" alt="{{ pet.name }}" >
+                        {% else %}
+                            <img class="pet-img mr-2" src="{% static "mypet/img/default_pet_profile.png" %}" alt="default-img">
+                        {% endif %}
+                        {{ pet.name }}, né le {{ pet.birth_date }}
+                        <button class="btn btn-sm btn-light ml-4">
+                            <small><a href="{% url "update_my_pet" id_pet=pet.id %}">Modifier</a></small>
+                        </button>
+                        <button class=" btn btn-sm btn-light" onclick="return confirm('Êtes-vous sûr(e) ?');" >
+                            <small><a href="{% url "delete_my_pet" id_pet=pet.id %}">Supprimer</a></small>
+                        </button>
                     </ul>
                 {% endfor %}
             </div>
