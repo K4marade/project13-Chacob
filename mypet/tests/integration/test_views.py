@@ -22,7 +22,7 @@ class TestViews(TestCase):
                                       password="12345Testing")
         self.c.login(username="Leonard", password="12345Testing")
 
-        new_pet_url = reverse('my_pet')
+        new_pet_url = reverse('mypet')
         assert self.c.get(new_pet_url).status_code == 200
 
         response = self.c.post(new_pet_url, {

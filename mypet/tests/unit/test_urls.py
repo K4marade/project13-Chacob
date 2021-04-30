@@ -7,8 +7,8 @@ class TestUrls:
     def test_my_pet_url(self):
         """Tests my_pet url"""
 
-        path = reverse('my_pet')
-        assert resolve(path).view_name == 'my_pet'
+        path = reverse('mypet')
+        assert resolve(path).view_name == 'mypet'
 
     def test_update_my_pet_url(self):
         """Tests update_my_pet_url"""

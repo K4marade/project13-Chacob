@@ -19,7 +19,7 @@ def create_pet_view(request):
             pet.save()
             messages.success(request, pet.name + " a bien été ajouté !")
             form = AddPetForm()
-            return redirect('my_pet')
+            return redirect('mypet')
         # else:
         #     error = form.errors
         #     form = AddPetForm(request.POST or None, request.FILES or None)
@@ -38,7 +38,7 @@ def update_pet_view(request, id_pet):
             pet = form.save(commit=False)
             pet.user = request.user
             pet.save()
-            return redirect("my_pet")
+            return redirect("mypet")
         # else:
         #     error = form.errors
         #     return render(request, "mypet.html", locals())
@@ -47,4 +47,4 @@ def update_pet_view(request, id_pet):
 def delete_pet_view(request, id_pet):
     instance_pet = Pet.objects.get(pk=id_pet)
     instance_pet.delete()
-    return redirect("my_pet")
+    return redirect("mypet")
