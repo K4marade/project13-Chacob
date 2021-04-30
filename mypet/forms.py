@@ -4,7 +4,7 @@ from .models import Pet
 from django.utils.translation import gettext_lazy as _
 
 
-class PetForm(ModelForm):
+class AddPetForm(ModelForm):
     class Meta:
         model = Pet
         widgets = {"birth_date": DateInput(attrs={"type": "date"})}
@@ -13,7 +13,7 @@ class PetForm(ModelForm):
                   "gender": _("Sexe"),
                   "birth_date": _("Date de naissance"),
                   "name": _("Nom de mon animal"),
-                  "picture": _("Ajouter une photo")}
+                  "picture": _("Photo de profile")}
 
     # def clean_picture(self):
     #     data = self.cleaned_data['picture'].size
@@ -30,7 +30,7 @@ class EditPetForm(ModelForm):
         labels = {"species": _("Espèce"),
                   "gender": _("Sexe"),
                   "name": _("Nom de mon animal"),
-                  "picture": _("Ajouter une photo")}
+                  "picture": _("Photo de profile")}
 
     # def clean_picture(self):
     #     data = self.cleaned_data['picture'].size
