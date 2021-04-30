@@ -1,9 +1,6 @@
 .body-section{
     padding: 5rem 0;
-    background: white;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-attachment: scroll;
+    background: white no-repeat scroll center;
     background-size: cover;
     min-height: 100%;
 }
@@ -27,7 +24,7 @@ p, .p{
 }
 
 .wrapper{
-    border: 3px solid #dddddd;
+    border: 2px solid #d6d6cf;
     border-radius: 1rem;
     display: flex;
     overflow-x: auto;
@@ -39,11 +36,19 @@ p, .p{
 
 .td-sm{
     word-wrap: break-word;
-    min-width: 160px;
+    min-width: 80px;
+    max-width: 80px;
 }
+
+.td-md{
+    word-wrap: break-word;
+    min-width: 160px;
+    max-width: 160px;
+}
+
 
 .td-lg{
     word-wrap: break-word;
-    min-width: 250px;
-    max-width: 250px;
+    min-width: 200px;
+    max-width: 200px;
 }

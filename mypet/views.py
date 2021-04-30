@@ -1,7 +1,7 @@
 from django.contrib import messages
 from django.shortcuts import render, redirect
 
-from .forms import PetForm, EditPetForm
+from .forms import AddPetForm, EditPetForm
 from .models import Pet
 
 
@@ -9,20 +9,20 @@ def create_pet_view(request):
     pets_list = Pet.objects.filter(user=request.user).order_by('species')
 
     if request.method == "GET":
-        form = PetForm()
+        form = AddPetForm()
         return render(request, "mypet.html", locals())
     elif request.method == "POST":
-        form = PetForm(request.POST, request.FILES)
+        form = AddPetForm(request.POST, request.FILES)
         if form.is_valid():
             pet = form.save(commit=False)
             pet.user = request.user
             pet.save()
             messages.success(request, pet.name + " a bien été ajouté !")
-            form = PetForm()
+            form = AddPetForm()
             return redirect('my_pet')
         # else:
         #     error = form.errors
-        #     form = PetForm(request.POST or None, request.FILES or None)
+        #     form = AddPetForm(request.POST or None, request.FILES or None)
         #     return render(request, "mypet.html", locals())
 
 
