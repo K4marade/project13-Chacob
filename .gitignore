@@ -9,7 +9,7 @@ db.sqlite3-journal
 
 .DS_Store
 
-chacob/settings/.env
+.env
 
 .coveragerc
 .coverage

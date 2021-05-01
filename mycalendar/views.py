@@ -5,11 +5,6 @@ from django.shortcuts import render, redirect
 from .models import Event
 from .forms import EventForm
 
-import environ
-
-env = environ.Env()
-environ.Env.read_env()
-
 
 @login_required
 def create_events_view(request):

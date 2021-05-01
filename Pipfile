@@ -5,7 +5,6 @@ name = "pypi"
 
 [packages]
 django = "*"
-django-environ = "*"
 psycopg2-binary = "*"
 django-widget-tweaks = "*"
 pytest = "*"
@@ -21,6 +20,7 @@ datetime = "*"
 geopy = "*"
 pillow = "*"
 selenium = "*"
+python-dotenv = "*"
 
 [dev-packages]
 
