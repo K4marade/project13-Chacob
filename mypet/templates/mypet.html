@@ -15,7 +15,7 @@
     <header class="cal-header">
     </header>
     <!-- Masthead-->
-    <div class="container-fluid body-section">
+    <div class="container body-section">
         {% if pets_list.count == 0 %}
             <div class="container col-11 col-md-6 card card-body">
                 <div class="align-items-center justify-content-center text-center">
@@ -45,14 +45,17 @@
                                         {{ form.gender | as_crispy_field }}
                                     </div>
                                 </div>
-                                    <div class="row">
-                                        <div class="col-12 col-md-6">
-                                            {{ form.name | as_crispy_field }}
-                                        </div>
-                                        <div class="col-12 col-md-6">
-                                            {{ form.picture | as_crispy_field }}
-                                        </div>
+                                <div class="row">
+                                    <div class="col-12 col-md-6">
+                                        {{ form.name | as_crispy_field }}
                                     </div>
+                                    <div class="col-12 col-md-6">
+                                        {{ form.birth_date | as_crispy_field }}
+                                    </div>
+                                    <div class="col-12 col-md-6">
+                                        {{ form.picture | as_crispy_field }}
+                                    </div>
+                                </div>
                                 <button class="btn btn-primary" type="submit">Valider</button>
                             </form>
                         </div>
