@@ -1,3 +1,4 @@
+import os
 import sys
 from django.core.mail import send_mail
 from django.core.management.base import BaseCommand
@@ -6,12 +7,8 @@ from accounts.models import UserAuth
 from mycalendar.models import Event
 from datetime import datetime
 
-import environ
 
 from mypet.models import Pet
-
-env = environ.Env()
-environ.Env.read_env(env_file='chacob.settings')
 
 
 class Email:
@@ -32,12 +29,12 @@ class Email:
         if len(today_events) != 0:
             for event in today_events:
                 user_email = UserAuth.objects.get(id=event.user_id_id).email
-                pet_name = str(Pet.objects.get(name=event.pet_name))
+                pet_name = str(Event.objects.get(id=event.id).pet_name)
                 reason = event.reason
                 send_mail("Rappel de rendez-vous vétérinaire",
                           "Bonjour,\n\nNous vous rappelons que vous avez rendez-vous aujourd'hui "
                           "pour " + pet_name + ".\n\nMotif : " + reason,
-                          env("GMAIL_USER"),
+                          os.environ.get("GMAIL_USER"),
                           [user_email])
         else:
             sys.stdout.write("No events this day")
