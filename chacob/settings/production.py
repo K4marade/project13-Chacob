@@ -2,6 +2,8 @@ from . import *
 
 load_dotenv()
 
+ALLOWED_HOSTS = ['134.209.92.2']
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
