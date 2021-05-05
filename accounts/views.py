@@ -27,7 +27,6 @@ def register_view(request):
 
     if request.method == "GET":
         form = RegisterForm()
-        return render(request, 'registration/register.html', locals())
     elif request.method == "POST":
         form = RegisterForm(request.POST)
         if form.is_valid():
@@ -38,6 +37,10 @@ def register_view(request):
             login(request, user)
             messages.success(request, "Bienvenue " + username + " !")
             return redirect('home')
+
+    return render(request, 'registration/register.html', locals())
+
+
 
 
 def logout_view(request):
