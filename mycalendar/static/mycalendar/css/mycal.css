@@ -27,7 +27,11 @@ p, .p{
     border: 2px solid #d6d6cf;
     border-radius: 1rem;
     display: flex;
-    overflow-x: auto;
+    overflow-x: scroll;
+}
+
+.wrapper::-webkit-scrollbar{
+    width: 0;
 }
 
 .wrapper .item{
