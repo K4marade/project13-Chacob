@@ -26,7 +26,6 @@ def create_events_view(request):
 
     if request.method == "GET":
         form = EventForm(request.user)
-        return render(request, "mycalendar.html", locals())
     elif request.method == "POST":
         form = EventForm(request.user, request.POST)
         if form.is_valid():
@@ -46,6 +45,7 @@ def create_events_view(request):
             messages.success(request, "Votre nouveau rendez-vous a bien été enregistré")
             form = EventForm(request.user)
             return redirect('mycalendar')
+    return render(request, "mycalendar.html", locals())
 
 
 def delete_events_view(request, id_event):

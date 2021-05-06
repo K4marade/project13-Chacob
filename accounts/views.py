@@ -6,6 +6,7 @@ from django.contrib.auth import logout, login, authenticate
 from mypet.models import Pet
 from .forms import RegisterForm
 
+
 # from .decorators import unauthenticated_user
 
 
@@ -39,8 +40,6 @@ def register_view(request):
             return redirect('home')
 
     return render(request, 'registration/register.html', locals())
-
-
 
 
 def logout_view(request):

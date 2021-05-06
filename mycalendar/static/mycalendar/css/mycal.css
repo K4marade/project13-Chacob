@@ -25,14 +25,30 @@ p, .p{
 
 .wrapper{
     border: 2px solid #d6d6cf;
-    border-radius: 1rem;
+    border-radius: 8px;
     display: flex;
-    overflow-x: auto;
+    overflow-x: scroll;
+}
+
+.wrapper::-webkit-scrollbar {
+    -webkit-appearance: none;
+}
+
+.wrapper::-webkit-scrollbar:horizontal {
+    height: 8px;
+}
+
+.wrapper::-webkit-scrollbar-thumb {
+    border-radius: 8px;
+    border: 2px solid white; /* should match background, can't be transparent */
+    background-color: rgba(0, 0, 0, .5);
 }
 
 .wrapper .item{
     text-align: center;
 }
+
+
 
 .td-sm{
     word-wrap: break-word;

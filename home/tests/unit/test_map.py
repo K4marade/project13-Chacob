@@ -28,7 +28,7 @@ class TestMapLocations:
                         "lon": 4.835659,
                         "display_name": "144 av. du Maine, Paris",
                         "address": {"municipality": "Paris"}
-                    }]
+                }]
 
         def mockreturn(*args):
             mockreturn.params = {"args": args}
