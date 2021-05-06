@@ -10,11 +10,12 @@ db.sqlite3-journal
 .DS_Store
 
 .env
-
 .coveragerc
 .coverage
+.flake8
 
 htmlcov/
 send_alert.sh
 
 media/
+

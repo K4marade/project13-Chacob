@@ -8,9 +8,6 @@ from mycalendar.models import Event
 from datetime import datetime
 
 
-from mypet.models import Pet
-
-
 class Email:
 
     def __init__(self):

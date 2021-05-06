@@ -21,10 +21,10 @@ def create_pet_view(request):
             return redirect('mypet')
     return render(request, "mypet.html", locals())
 
-        # else:
-        #     error = form.errors
-        #     form = AddPetForm(request.POST or None, request.FILES or None)
-        #     return render(request, "mypet.html", locals())
+    # else:
+    #     error = form.errors
+    #     form = AddPetForm(request.POST or None, request.FILES or None)
+    #     return render(request, "mypet.html", locals())
 
 
 def update_pet_view(request, id_pet):

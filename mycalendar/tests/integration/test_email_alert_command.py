@@ -76,9 +76,9 @@ class TestCommand:
         assert len(UserAuth.objects.filter(email="testleonard@test.com")) == 1
 
         # Create a pet
-        pet = mixer.blend(Pet,
-                          user=UserAuth.objects.get(id=user.id),
-                          name="Felix")
+        mixer.blend(Pet,
+                    user=UserAuth.objects.get(id=user.id),
+                    name="Felix")
 
         # Create a user event with alert False
         user_event = mixer.blend(Event,
