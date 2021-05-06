@@ -5,6 +5,8 @@ from django.utils.translation import gettext_lazy as _
 
 
 class AddPetForm(ModelForm):
+    """Class that defines a new pet form"""
+
     class Meta:
         model = Pet
         widgets = {"birth_date": DateInput(attrs={"type": "date"})}
@@ -24,6 +26,8 @@ class AddPetForm(ModelForm):
 
 
 class EditPetForm(ModelForm):
+    """Class that defines a pet modification form"""
+
     class Meta:
         model = Pet
         fields = ("species", "gender", "name", "picture")

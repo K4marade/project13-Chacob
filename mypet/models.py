@@ -4,6 +4,8 @@ from django.conf import settings
 
 
 def validate_image(fieldfile_obj):
+    """Function used to restrict file upload size"""
+
     filesize = fieldfile_obj.file.size
     megabyte_limit = 5.0
     if filesize > megabyte_limit * 1024 * 1024:
@@ -11,6 +13,8 @@ def validate_image(fieldfile_obj):
 
 
 class Pet(models.Model):
+    """Stores a single pet entry, related to :model:`accounts.UserAuth`."""
+
     SPECIES_CHOICE = [
         ("cat", "Chat"),
         ("dog", "Chien")

@@ -49,6 +49,8 @@ def create_events_view(request):
 
 
 def delete_events_view(request, id_event):
+    """Function that delete a user's event from database"""
+
     instance_event = Event.objects.get(pk=id_event)
     instance_event.delete()
     return redirect("mycalendar")
