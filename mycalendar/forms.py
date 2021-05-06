@@ -6,6 +6,8 @@ from django.utils.translation import gettext_lazy as _
 
 
 class EventForm(ModelForm):
+    """Class that defines new event register form"""
+
     class Meta:
         model = Event
         widgets = {"date": DateTimeInput(attrs={"type": "datetime-local",
