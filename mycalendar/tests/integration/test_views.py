@@ -1,6 +1,7 @@
 from django.contrib.auth import get_user_model
 from django.test import TestCase, Client
 from django.urls import reverse
+from mixer.backend.django import mixer
 
 from mycalendar.models import Event
 from mypet.models import Pet
@@ -16,7 +17,7 @@ class TestViews(TestCase):
         self.user = get_user_model()
         self.c = Client()
 
-    def test_events_view(self):
+    def test_create_events_view(self):
         """Method that tests a new event is created by a user"""
 
         user = self.user.objects.create_user(username="Leonard",
@@ -49,3 +50,19 @@ class TestViews(TestCase):
         message = list(response.context['messages'])
         assert len(message) == 1
         assert str(message[0]) == "Votre nouveau rendez-vous a bien été enregistré"
+
+    def test_delete_events_view(self):
+        """Method that tests delete_event_view"""
+
+        mixer.blend(Event, reason="Vaccin")
+
+        event = Event.objects.get(reason="Vaccin")
+
+        assert Event.objects.count() == 1
+
+        delete_url = reverse("delete_event", kwargs={"id_event": event.id})
+
+        response = self.c.get(delete_url)
+
+        assert response.status_code == 302
+        assert Event.objects.count() == 0
