@@ -30,7 +30,7 @@ class Email:
                 reason = event.reason
                 send_mail("Rappel de rendez-vous vétérinaire",
                           "Bonjour,\n\nNous vous rappelons que vous avez rendez-vous aujourd'hui "
-                          "pour " + pet_name + ".\n\nMotif : " + reason,
+                          "pour " + pet_name + ".\n\nMotif : " + reason + "\n\nL'Equipe Chacob.fr",
                           os.environ.get("GMAIL_USER"),
                           [user_email])
         else:
