@@ -6,7 +6,7 @@ from django.core import mail
 import time
 import re
 
-firefox_options = webdriver.ChromeOptions()
+firefox_options = webdriver.FirefoxOptions()
 firefox_options.add_argument("--headless")
 firefox_options.add_argument("--window-size=1920,1200")
 
@@ -17,7 +17,7 @@ class FirefoxFunctionalTestCase(StaticLiveServerTestCase):
     def setUp(self):
         """Tests setup method"""
 
-        self.driver = webdriver.Chrome(options=firefox_options, )
+        self.driver = webdriver.Firefox(options=firefox_options, )
         self.driver.maximize_window()
         self.user = get_user_model()
 
@@ -104,7 +104,7 @@ class FirefoxFunctionalTestCase(StaticLiveServerTestCase):
         self.user.objects.create_user(
             username="LeonardCOLIN",
             password="1234Testing!",
-            email="testing@purbeurre.com"
+            email="testing@chacob.com"
         )
 
         self.driver.get(self.live_server_url)
@@ -122,7 +122,7 @@ class FirefoxFunctionalTestCase(StaticLiveServerTestCase):
         time.sleep(1)
 
         # User puts his email and clicks on the "Send" button
-        self.get_element("#id_email").send_keys("testing@purbeurre.com")
+        self.get_element("#id_email").send_keys("testing@chacob.com")
         self.get_element("#button-confirm").click()
 
         # assert one message has been sent
@@ -153,7 +153,7 @@ class FirefoxFunctionalTestCase(StaticLiveServerTestCase):
         self.user.objects.create_user(
             username="LeonardCOLIN",
             password="1234Testing!",
-            email="testing@purbeurre.com"
+            email="testing@chacob.com"
         )
 
         self.driver.get(self.live_server_url)

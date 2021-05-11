@@ -31,7 +31,7 @@ class Email:
                 send_mail("Rappel de rendez-vous vétérinaire",
                           "Bonjour,\n\nNous vous rappelons que vous avez rendez-vous aujourd'hui "
                           "pour " + pet_name + ".\n\nMotif : " + reason + "\n\nL'Equipe Chacob.fr",
-                          os.environ.get("GMAIL_USER"),
+                          os.environ.get("EMAIL_USER"),
                           [user_email])
         else:
             sys.stdout.write("No events this day")
