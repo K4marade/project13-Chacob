@@ -1,6 +1,7 @@
 # from django.core.exceptions import ValidationError
 from django.db import models
 from django.conf import settings
+from PIL import Image
 
 
 # def validate_image(fieldfile_obj):
@@ -30,6 +31,17 @@ class Pet(models.Model):
     birth_date = models.DateField()
     name = models.CharField(max_length=50)
     picture = models.ImageField(null=True, blank=True, upload_to="images/", )  # validators=[validate_image])
+
+    def save(self, *args, **kwargs):
+        """Function that resizes an image if size is over 1024 px"""
+
+        super().save(*args, **kwargs)
+        img = Image.open(self.picture.path)
+
+        if img.height > 1024 or img.width > 1024:
+            output_size = (img.height/2, img.width/2)
+            img.thumbnail(output_size)
+            img.save(self.picture.path)
 
     def __str__(self):
         return "{}".format(self.name)
