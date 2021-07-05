@@ -104,7 +104,7 @@ class ChromeFunctionalTestCase(StaticLiveServerTestCase):
         self.user.objects.create_user(
             username="LeonardCOLIN",
             password="1234Testing!",
-            email="testing@purbeurre.com"
+            email="testing@chacob.com"
         )
 
         self.driver.get(self.live_server_url)
@@ -122,7 +122,7 @@ class ChromeFunctionalTestCase(StaticLiveServerTestCase):
         time.sleep(1)
 
         # User puts his email and clicks on the "Send" button
-        self.get_element("#id_email").send_keys("testing@purbeurre.com")
+        self.get_element("#id_email").send_keys("testing@chacob.com")
         self.get_element("#button-confirm").click()
 
         # assert one message has been sent
@@ -153,7 +153,7 @@ class ChromeFunctionalTestCase(StaticLiveServerTestCase):
         self.user.objects.create_user(
             username="LeonardCOLIN",
             password="1234Testing!",
-            email="testing@purbeurre.com"
+            email="testing@chacob.com"
         )
 
         self.driver.get(self.live_server_url)
