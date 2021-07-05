@@ -27,10 +27,14 @@ class OpenStreetMap:
         response = data.json()
 
         for place in response:
-            if search in place["address"]["municipality"] or search in place["address"]["postcode"]:
+            address = place['address']
+            if search in address["municipality"] or search in address["postcode"]:
                 self.lat.append(place["lat"])
                 self.lng.append(place["lon"])
-                self.address.append(place["display_name"])
+                # address = place['address']
+                complete_address = address['amenity'] + "\n" + address['road'] + "\n" + address['postcode'] + " "\
+                    + address['municipality']
+                self.address.append(complete_address)
         return self.lat, self.lng, self.address
 
     @staticmethod
