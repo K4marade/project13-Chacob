@@ -15,7 +15,7 @@ class OpenStreetMap:
     def get_places_location(self, search):
         url = "https://nominatim.openstreetmap.org/search"
         params = {
-            "q": "Clinique Vétérinaire, Vétérinaire, " + search + ", FR",
+            "q": "Clinique Vétérinaire in   " + search + ", FR",
             "limit": 20,
             "country": "france",
             "countrycodes": "fr",
