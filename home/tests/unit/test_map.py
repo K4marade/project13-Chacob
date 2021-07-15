@@ -10,25 +10,36 @@ class TestMapLocations:
     def test_get_places_location(self, monkeypatch):
         places = ([48.8534, 45.764043],
                   [2.3488, 4.835659],
-                  ["18, rue de Lyon, Paris", "144 av. du Maine, Paris"])
+                  ['Vétérinaire\n''rue de Lyon\n''75012 Paris',
+                   'Vétérinaire\n''Avenue du Maine\n''75014 Paris'],)
 
         class MockRequestResponse:
             status_code = 200
 
             @staticmethod
             def json():
-                return [{
-                    "lat": 48.8534,
-                    "lon": 2.3488,
-                    "display_name": "18, rue de Lyon, Paris",
-                    "address": {"municipality": "Paris"}
-                },
+                return [
+                    {
+                        "lat": 48.8534,
+                        "lon": 2.3488,
+                        "address": {
+                            "municipality": "Paris",
+                            "amenity": "Vétérinaire",
+                            "road": "rue de Lyon",
+                            "postcode": "75012"
+                        }
+                    },
                     {
                         "lat": 45.764043,
                         "lon": 4.835659,
-                        "display_name": "144 av. du Maine, Paris",
-                        "address": {"municipality": "Paris"}
-                }]
+                        "address": {
+                            "municipality": "Paris",
+                            "amenity": "Vétérinaire",
+                            "road": "Avenue du Maine",
+                            "postcode": "75014"
+                        }
+                    }
+                ]
 
         def mockreturn(*args):
             mockreturn.params = {"args": args}
