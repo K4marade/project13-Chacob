@@ -1,11 +1,13 @@
+import pytest
+
+from django.core import mail
+from django.utils import timezone
+
 from mixer.backend.django import mixer
 from mycalendar.management.commands.email_alert import Email
 from mycalendar.models import Event
 from accounts.models import UserAuth
 from mypet.models import Pet
-from django.core import mail
-from datetime import datetime
-import pytest
 
 
 @pytest.mark.django_db
@@ -41,13 +43,11 @@ class TestCommand:
 
         # Create a user event
         user_event = mixer.blend(Event,
-                                 date=datetime.now(),
+                                 date=timezone.now(),
                                  reason="Vaccin",
                                  pet_name=Pet.objects.get(name="Felix"),
                                  user_id_id=UserAuth.objects.get(id=user.id).id,
                                  mail_alert=True)
-
-        print(user_event.pet_name)
 
         assert user_event.reason == "Vaccin"
 
@@ -82,7 +82,7 @@ class TestCommand:
 
         # Create a user event with alert False
         user_event = mixer.blend(Event,
-                                 date=datetime.now(),
+                                 date=timezone.now(),
                                  reason="Vaccin",
                                  pet_name=Pet.objects.get(name="Felix"),
                                  user_id_id=UserAuth.objects.get(id=user.id).id,

@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'mypet',
     'widget_tweaks',
     'crispy_forms',
+    'imagekit',
 ]
 
 MIDDLEWARE = [
@@ -117,7 +118,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'fr-FR'
 
-TIME_ZONE = 'Europe/Paris'
+TIME_ZONE = 'UTC'
 
 USE_I18N = True
 
