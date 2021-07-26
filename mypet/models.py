@@ -1,4 +1,3 @@
-# from django.core.exceptions import ValidationError
 from django.db import models
 from django.conf import settings
 
@@ -31,3 +30,16 @@ class Pet(models.Model):
 
     def __str__(self):
         return "{}".format(self.name)
+
+    def save(self, *args, **kwargs):
+        try:
+            old = Pet.objects.get(id=self.id)
+            if old.picture != self.picture:
+                old.picture.delete()
+        except:
+            pass
+        super().save(*args, **kwargs)
+
+    def delete(self, *args, **kwargs):
+        self.picture.delete()
+        super().delete(*args, **kwargs)
