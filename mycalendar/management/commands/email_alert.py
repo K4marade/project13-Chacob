@@ -1,11 +1,12 @@
 import os
 import sys
+
 from django.core.mail import send_mail
 from django.core.management.base import BaseCommand
+from django.utils import timezone
 
 from accounts.models import UserAuth
 from mycalendar.models import Event
-from datetime import datetime
 
 
 class Email:
@@ -17,7 +18,7 @@ class Email:
     def send_mail_alert():
 
         # Get the current date in a string
-        now = str(datetime.now()).split()[0]
+        now = str(timezone.now()).split()[0]
 
         # Find today events from the current date
         today_events = Event.objects.filter(date__icontains=now, mail_alert=True)
