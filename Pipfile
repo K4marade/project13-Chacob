@@ -21,6 +21,7 @@ geopy = "*"
 pillow = "*"
 selenium = "*"
 python-dotenv = "*"
+django-imagekit = "*"
 
 [dev-packages]
 

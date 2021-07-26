@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'mypet',
     'widget_tweaks',
     'crispy_forms',
+    'imagekit',
 ]
 
 MIDDLEWARE = [
