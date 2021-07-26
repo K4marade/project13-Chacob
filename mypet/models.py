@@ -1,5 +1,8 @@
+import datetime
+
 from django.db import models
 from django.conf import settings
+from django.utils import timezone
 
 from imagekit.models import ProcessedImageField
 from imagekit.processors import ResizeToFit
@@ -24,7 +27,7 @@ class Pet(models.Model):
     name = models.CharField(max_length=50)
     picture = ProcessedImageField(null=True,
                                   blank=True,
-                                  upload_to="images/",
+                                  upload_to=f"images/{timezone.localdate()}",
                                   processors=[ResizeToFit(300, 300, upscale=False)],
                                   format='JPEG')
 
@@ -36,7 +39,7 @@ class Pet(models.Model):
             old = Pet.objects.get(id=self.id)
             if old.picture != self.picture:
                 old.picture.delete()
-        except:
+        except (Pet.DoesNotExist, RecursionError):
             pass
         super().save(*args, **kwargs)
 
