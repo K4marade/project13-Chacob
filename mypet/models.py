@@ -1,11 +1,9 @@
-import datetime
-
 from django.db import models
 from django.conf import settings
 from django.utils import timezone
 
 from imagekit.models import ProcessedImageField
-from imagekit.processors import ResizeToFit
+from imagekit.processors import ResizeToFill
 
 
 class Pet(models.Model):
@@ -30,7 +28,7 @@ class Pet(models.Model):
     picture = ProcessedImageField(null=True,
                                   blank=True,
                                   upload_to=f"images/{timezone.localdate()}",
-                                  processors=[ResizeToFit(300, 300, upscale=False)],
+                                  processors=[ResizeToFill(300, 300, upscale=False)],
                                   format='JPEG')
 
     def __str__(self):
