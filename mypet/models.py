@@ -13,7 +13,9 @@ class Pet(models.Model):
 
     SPECIES_CHOICE = [
         ("cat", "Chat"),
-        ("dog", "Chien")
+        ("dog", "Chien"),
+        ("bird", "Oiseau"),
+        ("rabbit", "Lapin"),
     ]
     GENDER_CHOICE = [
         ("male", "Mâle"),
