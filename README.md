@@ -1,4 +1,4 @@
-# Welcome on Chacob project !
+# Welcome to Chacob project !
 
 
 Chacob is a web application developed with [Django](https://www.djangoproject.com/) framework.  
@@ -43,7 +43,7 @@ _From localhost:_
 _You can deploy on Heroku servers_
 
 * Create an account on [Heroku](https://id.heroku.com/login) and read the [documentation](https://devcenter.heroku.com/articles/getting-started-with-python)  
-You can help with several tutorials on how to deploy a Django project on Heroku, like this one from MDN : 
+You can use several tutorials on how to deploy a Django project on Heroku, like this one from MDN : 
   [Django Deployment](https://developer.mozilla.org/en-US/docs/Learn/Server-side/Django/Deployment)
 
 _Or from other IaaS, e.g. [Digital Ocean](https://www.digitalocean.com/)_

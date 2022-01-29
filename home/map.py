@@ -14,11 +14,13 @@ class OpenStreetMap:
 
     def get_places_location(self, search):
         url = "https://nominatim.openstreetmap.org/search"
+
         params = {
-            "q": f"Clinique Vétérinaire in {search}",
-            "limit": 20,
+            "amenity": 'veterinaire',
+            "city": search,
             "country": "france",
             "countrycodes": "fr",
+            "limit": 100,
             "addressdetails": "1",
             "format": "json"
         }
@@ -28,12 +30,13 @@ class OpenStreetMap:
 
         for place in response:
             address = place['address']
-            if search in address["municipality"] or search in address["postcode"]:
+            city = address.get("city_district") or address.get("municipality")
+            if search in city or search in address.get("postcode"):
                 self.lat.append(place["lat"])
                 self.lng.append(place["lon"])
                 # address = place['address']
-                complete_address = address['amenity'] + "\n" + address['road'] + "\n" + address['postcode'] + " "\
-                    + address['municipality']
+                complete_address = f"{address.get('amenity')}\n{address.get('road')}\n{address.get('postcode')} " \
+                                   f"{city}"
                 self.address.append(complete_address)
         return self.lat, self.lng, self.address
 

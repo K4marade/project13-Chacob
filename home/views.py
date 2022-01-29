@@ -20,7 +20,7 @@ def home_view(request):
         try:
             location = osmap.get_places_location(search_address)
             osmap = osmap.display_map(location, search_address)
-        except (IndexError, ValueError):
+        except (IndexError, ValueError, TypeError):
             message = messages.error(
                 request, "Nous n'avons pas pu trouver de résultat. Réessayez")
             return render(request, 'home.html', locals())
