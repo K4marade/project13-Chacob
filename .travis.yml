@@ -7,7 +7,7 @@ addons:
 
 install:
   - pip3 install pipenv
-  - pipenv install
+  - pipenv sync
 
 before_script:
   - export PATH=$PATH:$PWD/webdrivers/
