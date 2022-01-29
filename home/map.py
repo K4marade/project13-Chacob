@@ -34,9 +34,8 @@ class OpenStreetMap:
             if search in city or search in address.get("postcode"):
                 self.lat.append(place["lat"])
                 self.lng.append(place["lon"])
-                # address = place['address']
-                complete_address = f"{address.get('amenity')}\n{address.get('road')}\n{address.get('postcode')} " \
-                                   f"{city}"
+                complete_address = f"{address.get('amenity', 'Vétérinaire')}\n{address.get('road')}\n" \
+                                   f"{address.get('postcode')} {city}"
                 self.address.append(complete_address)
         return self.lat, self.lng, self.address
 
