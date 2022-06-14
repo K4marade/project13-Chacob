@@ -2,7 +2,7 @@ from . import *
 
 load_dotenv()
 
-ALLOWED_HOSTS = ['134.209.92.2']
+ALLOWED_HOSTS = ['chacob.fr']
 
 DATABASES = {
     'default': {
