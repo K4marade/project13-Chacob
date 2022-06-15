@@ -23,9 +23,9 @@ def home_view(request):
         except (IndexError, ValueError, TypeError):
             message = messages.error(
                 request, "Nous n'avons pas pu trouver de résultat. Réessayez")
-            return render(request, 'home.html', locals())
-
-    return render(request, 'home.html', {'osmap': osmap})
+            return render(request, 'home.html', {'message': message})
+        return render(request, 'home.html', {'osmap': osmap})
+    return render(request, 'home.html')
 
 
 def legal_view(request):
