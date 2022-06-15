@@ -1,9 +1,9 @@
 {% extends 'main.html' %}
 {% load static %}
 
-{#{% block addcss %}#}
-{#    <link rel="stylesheet" type="text/css" href="{% static 'home/css/home.css' %}">#}
-{#{% endblock %}#}
+{% block addcss %}
+    <link rel="stylesheet" type="text/css" href="{% static '/home/css/home.css' %}">
+{% endblock %}
 
 {% block content %}
 
@@ -20,10 +20,10 @@
                 <div class="col-lg-8 align-self-baseline">
                     <h2 class="text-white mb-5">Trouvez un vétérinaire proche de chez vous et connectez-vous pour
                         gérer vos rendez-vous ! </h2>
-                    <form class="d-flex" id="main-search" action="{% url 'home' %}#osmap" method="POST">
+                    <form class="d-flex" id="main-search" action="" method="POST">
                         {% csrf_token %}
                         <div class="input-group mb-3">
-                            <input type="search" name="search-address" class="form-control" placeholder="Tappez le nom de votre ville" aria-label="Search" aria-describedby="button-addon2">
+                            <input type="search" id="search-input" name="search-address" class="form-control" placeholder="Tappez le nom de votre ville" aria-label="Search" aria-describedby="button-addon2">
                             <div class="input-group-append">
                                 <button style="background: #DE9440" class="btn" type="submit" id="button-addon2">Chercher</button>
                             </div>
@@ -39,9 +39,8 @@
             <div class="row justify-content-center">
                 <div class="col-lg-8 text-center">
                     {% if osmap %}
-{#                    <h2 class="text-white mt-0">Cherchez un vétérinaire</h2>#}
                         <hr class="divider light my-4" />
-                            <div>
+                            <div id="osmap-scroll">
                                 {{ osmap | safe }}
                             </div>
                         <hr class="divider light my-4" />
@@ -61,10 +60,6 @@
                 </div>
             </div>
             <div class="row">
-{#                <div class="col-lg-4 ml-auto text-center mb-5 mb-lg-0">#}
-{#                    <i class="fas fa-phone fa-3x mb-3 text-muted"></i>#}
-{#                    <div>+331 02 02 04 04</div>#}
-{#                </div>#}
                 <div class="col mr-auto text-center">
                     <i class="fas fa-envelope fa-3x mb-3 text-muted"></i>
                     <!-- Make sure to change the email address in BOTH the anchor text and the link target below!-->
@@ -74,4 +69,8 @@
         </div>
     </section>
 
+{% endblock %}
+
+{% block addjs %}
+    <script src="{% static 'home/js/home.js' %}"></script>
 {% endblock %}
