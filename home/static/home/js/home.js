@@ -7,15 +7,32 @@
 // 	})
 // }
 
-if (document.getElementById('main-search')){
-	const searchInput = document.getElementById('search-input')
-	const map = document.getElementById("osmap-scroll")
-
-	searchInput.addEventListener('submit', (event) => {
-		event.preventDefault()
+function postFormData(url, data, csrftoken) {
+	return fetch(url, {
+		method: "POST",
+		body: data,
+		headers: {"X-CSRFToken": csrftoken}
 	})
-	if (map) {
-		map.scrollIntoView({behavior: "smooth", block: "center"})
-	}
 }
+
+const formEL = document.getElementById('main-search')
+	// const searchInput = document.getElementById('search-input')
+const map = document.getElementById("osmap-scroll")
+
+formEL.addEventListener('submit', (event) => {
+	const userInput = new FormData(event.target)
+	const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value
+	event.preventDefault()
+	postFormData("/", userInput ,csrftoken)
+		.then(response => {
+			console.log(response)
+			// document.getElementById("osmap").innerHTML = "response['osmap']"
+			// return JSON.parse(document.getElementById("osmap-scroll").innerHTML = "{{ osmap | safe }}"
+		})
+})
+if (map) {
+	map.scrollIntoView({behavior: "smooth", block: "center"})
+}
+
+
 
