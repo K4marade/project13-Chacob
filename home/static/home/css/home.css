@@ -1,5 +1,4 @@
-
-/*#osmap.disabled {*/
-/*    display: none;*/
-/*}*/
-
+#osmap-scroll {
+    border: 5px solid white;
+    border-radius: 5px;
+}

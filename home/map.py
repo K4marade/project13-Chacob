@@ -1,7 +1,7 @@
 import folium
 import geocoder
 import requests
-
+from folium.plugins import MarkerCluster, LocateControl
 
 class OpenStreetMap:
     """Class that defines a map to be displayed to the user"""
@@ -45,20 +45,45 @@ class OpenStreetMap:
         to be displayed to the user in a template"""
 
         # Get city coordinates
-        city = geocoder.osm(location=city + ", FR", )
+        city = geocoder.osm(location=f"{city}, FR")
 
         # Initialise map
         osmap = folium.Map(location=[city.lat, city.lng], zoom_start=11)
+
+        # Add markers
+        markers = [
+            [lat, lng, address] for lat, lng, address in zip(places[0], places[1], places[2])
+        ]
+
+        # Set cluster with markers
+        marker_cluster = MarkerCluster(
+            name="Vet Markers",
+            control=False,
+            options={"showCoverageOnHover": False,}
+        ).add_to(osmap)
+
+        for marker in markers:
+            folium.Marker(
+                location=[marker[0], marker[1]],
+                popup=marker[2],
+                icon=folium.map.Icon(color="blue", prefix="fa", icon="fa-solid fa-house-medical"),
+            ).add_to(marker_cluster)
+
+
+        # Geolocation
+        location = LocateControl()
+        location.options = {
+            "flyTo": True,
+            "icon": "fa-solid fa-location-arrow",
+        }
+        location.add_to(osmap)
 
         # Add layers
         layer = folium.raster_layers
         layer.TileLayer(detect_retina=True).add_to(osmap)
         layer.TileLayer('Stamen Terrain', name='Terrain', detect_retina=True).add_to(osmap)
-        folium.LayerControl().add_to(osmap)
 
-        # Add markers according to results from search
-        for lat, lng, address in zip(places[0], places[1], places[2]):  # (self.lat, self.lng, self.address):
-            folium.Marker(location=[lat, lng], popup=address).add_to(osmap)
+        folium.LayerControl().add_to(osmap)
 
         # Render map with html code
         osmap = osmap._repr_html_()
