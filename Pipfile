@@ -32,6 +32,7 @@ attrs = "==21.4.0"
 coverage = "==6.3"
 faker = "==11.3.0"
 django-browser-reload = "*"
+django-pwa = "*"
 
 [dev-packages]
 
