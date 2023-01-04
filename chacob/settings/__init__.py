@@ -21,6 +21,7 @@ load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+# PWA_SERVICE_WORKER_PATH = os.path.join(BASE_DIR, 'static/js', 'serviceworker.js')
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
@@ -50,6 +51,7 @@ INSTALLED_APPS = [
     'widget_tweaks',
     'crispy_forms',
     'imagekit',
+    'pwa',
 ]
 
 MIDDLEWARE = [
@@ -134,6 +136,10 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static')
+]
+
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
@@ -163,3 +169,53 @@ DEFAULT_FROM_EMAIL = os.environ.get('EMAIL_USER')
 
 # Crispy forms
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
+PWA_APP_NAME = 'Chacob'
+PWA_APP_DESCRIPTION = "Chacob PWA"
+PWA_APP_THEME_COLOR = '#000000'
+PWA_APP_BACKGROUND_COLOR = '#ffffff'
+PWA_APP_DISPLAY = 'standalone'
+PWA_APP_SCOPE = '/'
+PWA_APP_ORIENTATION = 'any'
+PWA_APP_START_URL = '/'
+PWA_APP_STATUS_BAR_COLOR = 'default'
+PWA_APP_ICONS = [
+	{
+		'src': '/static/images/icon-192.png',
+		'sizes': '192x192',
+        'type': 'image/png',
+        'purpose': 'any maskable'
+	},
+    {
+        'src': '/static/images/icon-256.png',
+		'sizes': '256x256',
+        'type': 'image/png',
+        'purpose': 'any maskable'
+    },
+    {
+        'src': '/static/images/icon-512.png',
+		'sizes': '512x512',
+        'type': 'image/png',
+        'purpose': 'any maskable'
+    },
+    {
+        'src': '/static/images/favicon.ico',
+        'sizes': '64x64 32x32 24x24 16x16',
+        'type': 'image/x-icon'
+    },
+]
+PWA_APP_ICONS_APPLE = [
+	{
+		'src': '/static/images/apple-icon.png',
+		'sizes': '160x160'
+	}
+]
+PWA_APP_SPLASH_SCREEN = [
+	{
+		'src': '/static/images/icon.png',
+		'media': '(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)'
+	}
+]
+PWA_APP_DIR = 'ltr'
+PWA_APP_LANG = 'en-US'
+
