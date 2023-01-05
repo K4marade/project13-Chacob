@@ -1,6 +1,8 @@
 import folium
 import geocoder
 import requests
+from django.conf import settings
+from folium import TileLayer
 from folium.plugins import MarkerCluster, LocateControl
 
 class OpenStreetMap:
@@ -78,12 +80,15 @@ class OpenStreetMap:
         }
         location.add_to(osmap)
 
-        # Add layers
-        layer = folium.raster_layers
-        layer.TileLayer(detect_retina=True).add_to(osmap)
-        layer.TileLayer('Stamen Terrain', name='Terrain', detect_retina=True).add_to(osmap)
-
-        folium.LayerControl().add_to(osmap)
+        # Mapbox Layer
+        tile_url = f'https://api.mapbox.com/styles/v1/mapbox/streets-v12/tiles/256/{{z}}/{{x}}/{{y}}?access_token={settings.MAPBOX_KEY}'
+        layer = TileLayer(
+            tiles=tile_url,
+            attr="Mapbox©",
+            name="Mapbox",
+            detect_retina=True,
+        )
+        layer.add_to(osmap)
 
         # Render map with html code
         osmap = osmap._repr_html_()

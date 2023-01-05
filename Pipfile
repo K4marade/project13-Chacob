@@ -33,6 +33,7 @@ coverage = "==6.3"
 faker = "==11.3.0"
 django-browser-reload = "*"
 django-pwa = "*"
+django-mapbox-location-field = "*"
 
 [dev-packages]
 
