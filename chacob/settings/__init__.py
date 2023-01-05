@@ -52,7 +52,6 @@ INSTALLED_APPS = [
     'crispy_forms',
     'imagekit',
     'pwa',
-    'mapbox_location_field',
 ]
 
 MIDDLEWARE = [
