@@ -17,7 +17,7 @@
     <!-- Masthead-->
     <div class="container body-section">
         {% if pets_list.count == 0 %}
-            <div class="container col-11 col-md-6 card card-body">
+            <div class="container col-11 col-md-6 card card-body shadow">
                 <div class="align-items-center justify-content-center text-center">
                     <p>Vous n'avez encore aucun animal enregistré</p>
                 </div>
@@ -35,7 +35,7 @@
                 </button>
                 <div class="row">
                     <div class="collapse mt-3 col" id="form">
-                        <div class="card card-body">
+                        <div class="card card-body shadow">
                             <form class="mx-5 my-5 font-weight-bolder" method="post" enctype="multipart/form-data">{% csrf_token %}
                                 <div class="row">
                                     <div class="col-12 col-md-6">

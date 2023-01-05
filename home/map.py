@@ -36,7 +36,7 @@ class OpenStreetMap:
             if search in city or search in address.get("postcode"):
                 self.lat.append(place["lat"])
                 self.lng.append(place["lon"])
-                complete_address = f"{address.get('amenity', 'Vétérinaire')}\n{address.get('road')}\n" \
+                complete_address = f"{address.get('amenity', 'Vétérinaire')}<br/>{address.get('road')}<br/>" \
                                    f"{address.get('postcode')} {city}"
                 self.address.append(complete_address)
         return self.lat, self.lng, self.address
@@ -65,9 +65,15 @@ class OpenStreetMap:
         ).add_to(osmap)
 
         for marker in markers:
+            lat = marker[0]
+            lng = marker[1]
+            # Remove `</br>` element from addresses
+            clean_address = marker[2].replace('<br/>', ' ')
+
+            url = f"<a href='https://www.google.com/maps/search/{clean_address}/@{lat},{lng}z' target='_blank'>{marker[2]}</a>"
             folium.Marker(
                 location=[marker[0], marker[1]],
-                popup=marker[2],
+                popup=folium.Popup(html=url, max_width=150),
                 icon=folium.map.Icon(color="blue", prefix="fa", icon="fa-solid fa-house-medical"),
             ).add_to(marker_cluster)
 
