@@ -10156,11 +10156,12 @@ header.masthead h1 {
 
 #consent-popup {
   position: fixed;
-  bottom: 0;
+  top: 0;
   left: 0;
   right: 0;
   padding: 2rem;
   opacity: 1;
+  z-index: 2000;
   background-color: white;
   visibility: visible;
   transition: visibility 0.5s, opacity 0.5s linear;
