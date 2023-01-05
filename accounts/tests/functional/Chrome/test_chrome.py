@@ -1,4 +1,5 @@
 from selenium import webdriver
+from selenium.webdriver.common.by import By
 from django.contrib.staticfiles.testing import StaticLiveServerTestCase
 from django.contrib.auth import get_user_model
 from django.urls import reverse
@@ -30,7 +31,7 @@ class ChromeFunctionalTestCase(StaticLiveServerTestCase):
         """Method that uses a css selector to return
         an element from the driver."""
 
-        return self.driver.find_element_by_css_selector(selector)
+        return self.driver.find_element(By.CSS_SELECTOR, selector)
 
     def test_user_can_connect_and_disconnect(self):
         """
