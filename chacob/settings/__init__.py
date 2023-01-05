@@ -170,6 +170,9 @@ DEFAULT_FROM_EMAIL = os.environ.get('EMAIL_USER')
 # Crispy forms
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
+# MAPBOX
+MAPBOX_KEY = os.environ.get("MAPBOX_KEY")
+
 PWA_APP_NAME = 'Chacob'
 PWA_APP_DESCRIPTION = "Chacob PWA"
 PWA_APP_THEME_COLOR = '#000000'

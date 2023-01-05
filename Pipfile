@@ -35,6 +35,7 @@ django-browser-reload = "*"
 django-pwa = "*"
 
 [dev-packages]
+devtools = "*"
 
 [requires]
 python_version = "3.8"
