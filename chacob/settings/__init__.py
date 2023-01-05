@@ -32,11 +32,17 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False if os.environ.get('ENV', 'development') == 'production' else True
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['*']
 
 # Application definition
+PROJECT_APPS = [
+    'accounts.apps.AccountsConfig',
+    'mycalendar.apps.MycalendarConfig',
+    'home.apps.HomeConfig',
+    'mypet.apps.MypetConfig',
+]
 
-INSTALLED_APPS = [
+PREREQ_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -44,15 +50,14 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django_browser_reload',
-    'accounts',
-    'mycalendar',
-    'home',
-    'mypet',
+    # Third part apps
     'widget_tweaks',
     'crispy_forms',
     'imagekit',
     'pwa',
 ]
+
+INSTALLED_APPS = PREREQ_APPS + PROJECT_APPS
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -98,6 +103,8 @@ DATABASES = {
         'PORT': '5432',
     }
 }
+
+DEFAULT_AUTO_FIELD = "django.db.models.AutoField"
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
