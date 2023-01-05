@@ -13,8 +13,7 @@
 }
 
 .bg-blue{
-    background: rgba(149, 191, 218, 0.5);
-
+    background: rgba(149, 191, 218, 0.3);
 }
 
 p, .p{
@@ -26,6 +25,7 @@ p, .p{
 .wrapper{
     border: 2px solid #d6d6cf;
     border-radius: 8px;
+    box-shadow: 10px 10px 2px whitesmoke;
     display: flex;
     overflow-x: scroll;
 }
