@@ -47,6 +47,11 @@ class FirefoxFunctionalTestCase(StaticLiveServerTestCase):
 
         self.driver.get(self.live_server_url)
 
+        time.sleep(1)
+        # User is on the homepage and accepts the terms of use
+        self.get_element("#accept").click()
+        time.sleep(2)
+
         # User is on the homepage and clicks on the login button
         self.get_element("#button-login").click()
 
@@ -84,6 +89,11 @@ class FirefoxFunctionalTestCase(StaticLiveServerTestCase):
 
         self.driver.get(self.live_server_url)
 
+        time.sleep(1)
+        # User is on the homepage and accepts the terms of use
+        self.get_element("#accept").click()
+        time.sleep(2)
+
         # User is on the homepage and clicks on the register button
         self.get_element("#button-register").click()
 
@@ -109,6 +119,11 @@ class FirefoxFunctionalTestCase(StaticLiveServerTestCase):
         )
 
         self.driver.get(self.live_server_url)
+
+        time.sleep(1)
+        # User is on the homepage and accepts the terms of use
+        self.get_element("#accept").click()
+        time.sleep(2)
 
         # User is on the homage and clicks on the login button
         self.get_element("#button-login").click()
@@ -158,6 +173,11 @@ class FirefoxFunctionalTestCase(StaticLiveServerTestCase):
         )
 
         self.driver.get(self.live_server_url)
+
+        time.sleep(1)
+        # User is on the homepage and accepts the terms of use
+        self.get_element("#accept").click()
+        time.sleep(2)
 
         # User is on the homepage and clicks on the login button
         self.get_element("#button-login").click()

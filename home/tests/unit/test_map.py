@@ -10,8 +10,8 @@ class TestMapLocations:
     def test_get_places_location(self, monkeypatch):
         places = ([48.8534, 45.764043],
                   [2.3488, 4.835659],
-                  ['Vétérinaire\n''rue de Lyon\n''75012 Paris',
-                   'Vétérinaire\n''Avenue du Maine\n''75014 Paris'],)
+                  ['Vétérinaire<br/>''rue de Lyon<br/>''75012 Paris',
+                   'Vétérinaire<br/>''Avenue du Maine<br/>''75014 Paris'],)
 
         class MockRequestResponse:
             status_code = 200
