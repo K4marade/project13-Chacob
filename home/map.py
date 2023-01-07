@@ -52,6 +52,14 @@ class OpenStreetMap:
         # Initialise map
         osmap = folium.Map(location=[city.lat, city.lng], zoom_start=11)
 
+        # Geolocation
+        location = LocateControl()
+        location.options = {
+            "flyTo": True,
+            "icon": "fa-solid fa-location-arrow",
+        }
+        location.add_to(osmap)
+
         # Add markers
         markers = [
             [lat, lng, address] for lat, lng, address in zip(places[0], places[1], places[2])
@@ -64,27 +72,29 @@ class OpenStreetMap:
             options={"showCoverageOnHover": False,}
         ).add_to(osmap)
 
+        print("\nLOCATION", location.__dict__, "\n")
+
         for marker in markers:
             lat = marker[0]
             lng = marker[1]
             # Remove `</br>` element from addresses
             clean_address = marker[2].replace('<br/>', ' ')
 
-            url = f"<a href='https://www.google.com/maps/search/{clean_address}/@{lat},{lng}z' target='_blank'>{marker[2]}</a>"
+            if location:
+                popup_content = f"""
+                            <a href='https://www.google.com/maps/search/{clean_address}/@{lat},{lng}z' target='_blank'>{marker[2]}</a>
+                            <div class='w-100 mx-auto'>
+                                <button class='btn btn-primary btn-sm mx-auto mt-4 w-100'>Y aller</button>
+                            </div>
+                            """
+            else:
+                popup_content = f"<a href='https://www.google.com/maps/search/{clean_address}/@{lat},{lng}z' target='_blank'>{marker[2]}</a>"
+
             folium.Marker(
                 location=[marker[0], marker[1]],
-                popup=folium.Popup(html=url, max_width=150),
+                popup=folium.Popup(html=popup_content, max_width=150, test="test"),
                 icon=folium.map.Icon(color="blue", prefix="fa", icon="fa-solid fa-house-medical"),
             ).add_to(marker_cluster)
-
-
-        # Geolocation
-        location = LocateControl()
-        location.options = {
-            "flyTo": True,
-            "icon": "fa-solid fa-location-arrow",
-        }
-        location.add_to(osmap)
 
         # Mapbox Layer
         tile_url = f'https://api.mapbox.com/styles/v1/mapbox/streets-v12/tiles/256/{{z}}/{{x}}/{{y}}?access_token={settings.MAPBOX_KEY}'
