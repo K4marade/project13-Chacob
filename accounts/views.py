@@ -1,4 +1,5 @@
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.views import PasswordResetView
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth import logout, login, authenticate
@@ -66,3 +67,8 @@ def profile_view(request):
     pet = Pet.objects.filter(user=request.user)
 
     return render(request, 'account/profile.html', locals())
+
+class CustomPasswordResetView(PasswordResetView):
+    """Override the email template sent to reset password"""
+
+    email_template_name = "registration/password_email.html"

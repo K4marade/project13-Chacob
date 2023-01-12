@@ -2,6 +2,7 @@ from django.urls import path
 from django.contrib.auth import views as auth_views
 
 from accounts import views
+from accounts.views import CustomPasswordResetView
 
 urlpatterns = [
     path('login/', auth_views.LoginView.as_view(
@@ -13,7 +14,7 @@ urlpatterns = [
     path('profile/', views.profile_view, name="profile"),
 
     # Reset password
-    path('reset_password/', auth_views.PasswordResetView.as_view(
+    path('reset_password/', CustomPasswordResetView.as_view(
         template_name="account/password_reset.html"),
         name="password_reset"),
     path('reset_password_sent/', auth_views.PasswordResetDoneView.as_view(
